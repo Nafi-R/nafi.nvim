@@ -247,7 +247,35 @@ require('lazy').setup({
   --
   -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
   --
-
+  --NOTE: Nafi's PLUGINS
+  { 'akinsho/toggleterm.nvim', version = '*', config = true },
+  {
+    'folke/snacks.nvim',
+    opts = {
+      scroll = {
+        animate = {
+          duration = { step = 15, total = 250 },
+          easing = 'linear',
+        },
+        -- faster animation when repeating scroll after delay
+        animate_repeat = {
+          delay = 100, -- delay in ms before using the repeat animation
+          duration = { step = 5, total = 50 },
+          easing = 'linear',
+        },
+        -- what buffers to animate
+        filter = function(buf)
+          return vim.g.snacks_scroll ~= false and vim.b[buf].snacks_scroll ~= false and vim.bo[buf].buftype ~= 'terminal'
+        end,
+      },
+    },
+  },
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = { { 'echasnovski/mini.icons', opts = {} } },
+    lazy = false,
+  },
   -- Alternatively, use `config = function() ... end` for full control over the configuration.
   -- If you prefer to call `setup` explicitly, use:
   --    {
@@ -1003,6 +1031,7 @@ require('lazy').setup({
     },
   },
 })
+require('toggleterm').setup {}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
