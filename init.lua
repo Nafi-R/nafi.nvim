@@ -805,7 +805,7 @@ require('lazy').setup({ -- NOTE: Plugins can be added with a link (or for a gith
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'default',
+        preset = 'super-tab',
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -949,8 +949,7 @@ require('lazy').setup({ -- NOTE: Plugins can be added with a link (or for a gith
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-  }  --  Uncomment any of the lines below to enable them (you will need to restart nvim).
-  --
+  }  --
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
@@ -960,7 +959,7 @@ require('lazy').setup({ -- NOTE: Plugins can be added with a link (or for a gith
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-, -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the -- init.lua. If you want these files, they are in the repository, so you can just download them and -- place them in the correct locations. -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart -- --  Here are some example plugins that I've included in the Kickstart repository.
+, -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the -- init.lua. If you want these files, they are in the repository, so you can just download them and -- place them in the correct locations. -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart -- --  Here are some example plugins that I've included in the Kickstart repository. --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   {
     import = 'custom.plugins',
   }, --
