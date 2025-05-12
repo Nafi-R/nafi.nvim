@@ -5,7 +5,7 @@ return {
   keys = { {
     '<leader>e',
     function()
-      Snacks.explorer()
+      require('snacks').explorer()
     end,
     desc = 'Toggle Snacks Explorer',
   } },
@@ -23,6 +23,7 @@ return {
     -- @Class snacks.Config
     explorer = {
       enabled = true,
+      replace_netrw = true,
     },
     indent = {
       enabled = true,
