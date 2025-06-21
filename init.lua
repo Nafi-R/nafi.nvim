@@ -237,7 +237,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', {
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
-
+require 'config.keymaps'
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -502,7 +502,7 @@ require('lazy').setup({ -- NOTE: Plugins can be added with a link (or for a gith
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
-          map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
@@ -858,14 +858,6 @@ require('lazy').setup({ -- NOTE: Plugins can be added with a link (or for a gith
     },
   },
   {
-    'navarasu/onedark.nvim',
-    name = 'onedark',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
-  }, -- Highlight todo, notes, etc in comments
-  {
     'folke/todo-comments.nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -949,17 +941,10 @@ require('lazy').setup({ -- NOTE: Plugins can be added with a link (or for a gith
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-  }  --
-  -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
+  }, -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
-  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    This is the easiest way to modularize your config.
-  --
-  --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-, -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the -- init.lua. If you want these files, they are in the repository, so you can just download them and -- place them in the correct locations. -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart -- --  Here are some example plugins that I've included in the Kickstart repository. --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   {
     import = 'custom.plugins',
   }, --
