@@ -10,7 +10,7 @@ return {
 
         pickers.new({}, {
             prompt_title = 'Select compile_commands.json to copy',
-            finder = finders.new_oneshot_job({'rg', '--files', '--glob', '\'**/compile_commands.json\''}, {
+            finder = finders.new_oneshot_job({'rg', '-u', '--files', '--glob', '**/compile_commands.json'}, {
                 cwd = root
             }),
             sorter = conf.generic_sorter({}),
