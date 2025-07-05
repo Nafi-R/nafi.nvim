@@ -219,18 +219,6 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', {
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', {
-  desc = 'Move focus to the left window',
-})
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', {
-  desc = 'Move focus to the right window',
-})
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', {
-  desc = 'Move focus to the lower window',
-})
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', {
-  desc = 'Move focus to the upper window',
-})
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
@@ -279,8 +267,7 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
-  { import =  'custom.plugins'},
-  require 'config.lsp',
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
