@@ -63,7 +63,7 @@ map('n', '<leader>\\', require('custom.utilities.splits').open_vertical, {
 map('n', '<leader>-', require('custom.utilities.splits').open_horizontal, {
   desc = '[S]plit [V]ertically',
 })
-map('n', '<leader>wd', '<CMD>close<CR>', {
+map('n', '<leader>q', '<CMD>close<CR>', {
   desc = 'Close window',
 })
 map('n', '<leader>cp', '<CMD>CopilotChat<CR>', { desc = 'Open Copilot Panel' })
