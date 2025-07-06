@@ -10,6 +10,7 @@ return {
     local neogit = require 'neogit'
     vim.keymap.set('n', '<leader>go', '<CMD>Neogit kind=floating<CR>', { desc = 'Open Neogit' })
     vim.keymap.set('n', '<leader>gd', '<CMD>Neogit diff kind=floating<CR>', { desc = 'Open Neogit diff' })
-    vim.keymap.set('n', '<leader>gb', '<CMD>Neogit branch kind=floating<CR>', { desc = 'Open Neogit diff' })
+    vim.keymap.set('n', '<leader>gb', '<CMD>Neogit branch kind=floating<CR>', { desc = 'Open Neogit branches' })
+    vim.keymap.set('n', '<leader>gl', '<CMD>Neogit log kind=floating<CR>', { desc = 'Open Neogit logs' })
   end,
 }
