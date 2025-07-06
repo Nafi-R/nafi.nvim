@@ -39,13 +39,26 @@ vim.keymap.set('n', '<C-S-k>', '<C-w>K', {
 })
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
+
 vim.keymap.set('n', '<TAB>', ':bn<CR>')
 vim.keymap.set('n', '<S-TAB>', ':bp<CR>')
-vim.keymap.set('n', '<leader>bd', ':bd<CR>')
+vim.keymap.set('n', '<leader>bd', ':bd<CR>', { desc = '[B]uffer [D]elete' })
+
 vim.keymap.set('n', 'J', 'mzJ`z')
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
+
+vim.keymap.set('n', '<leader>\\', '<CMD>vsplit<CR>', {
+  desc = '[S]plit [H]orizontally',
+})
+vim.keymap.set('n', '<leader>-', '<CMD>split<CR>', {
+  desc = '[S]plit [V]ertically',
+})
+vim.keymap.set('n', '<leader>wd', '<CMD>close<CR>', {
+  desc = 'Close window',
+})
