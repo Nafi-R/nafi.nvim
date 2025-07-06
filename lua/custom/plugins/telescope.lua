@@ -49,6 +49,19 @@ return { -- Fuzzy Finder (files, lsp, etc)
       --  All the info you're looking for is in `:help telescope.setup()`
       --
       -- pickers = {}
+      defaults = {
+        mappings = {
+          i = {
+            ['<C-d>'] = require('telescope.actions').delete_buffer, -- Delete buffer in insert mode
+            ['<C-u>'] = false, -- Disable default behavior of <C-u> in insert mode
+          },
+          n = {
+            ['<C-d>'] = require('telescope.actions').delete_buffer, -- Delete buffer in insert mode
+            ['<C-u>'] = false, -- Disable default behavior of <C-u> in insert mode
+          },
+        },
+      },
+
       extensions = {
         ['ui-select'] = { require('telescope.themes').get_dropdown() },
       },
@@ -66,22 +79,28 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>fk', builtin.keymaps, {
       desc = '[S]earch [K]eymaps',
     })
-    vim.keymap.set('n', '<leader>ff', function() builtin.find_files {
+    vim.keymap.set('n', '<leader>ff', function()
+      builtin.find_files {
         file_ignore_patterns = ignored_folders,
-    }end, {
+      }
+    end, {
       desc = '[S]earch [F]iles',
     })
     vim.keymap.set('n', '<leader>fs', builtin.builtin, {
       desc = '[S]earch [S]elect Telescope',
     })
-    vim.keymap.set('n', '<leader>fw', function() builtin.grep_string {
+    vim.keymap.set('n', '<leader>fw', function()
+      builtin.grep_string {
         file_ignore_patterns = ignored_folders,
-    }end, {
+      }
+    end, {
       desc = '[S]earch current [W]ord',
     })
-    vim.keymap.set('n', '<leader>fg', function() builtin.live_grep {
+    vim.keymap.set('n', '<leader>fg', function()
+      builtin.live_grep {
         file_ignore_patterns = ignored_folders,
-    }end, {
+      }
+    end, {
       desc = '[S]earch by [G]rep',
     })
     vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {
