@@ -43,8 +43,8 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
 
-vim.keymap.set('n', '<TAB>', ':bn<CR>')
-vim.keymap.set('n', '<S-TAB>', ':bp<CR>')
+vim.keymap.set('n', '<leader><TAB>', ':bn<CR>')
+vim.keymap.set('n', '<leader><S-TAB>', ':bp<CR>')
 vim.keymap.set('n', '<leader>bd', ':bd<CR>', { desc = '[B]uffer [D]elete' })
 
 vim.keymap.set('n', 'J', 'mzJ`z')
@@ -53,12 +53,15 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
-vim.keymap.set('n', '<leader>\\', '<CMD>vsplit<CR>', {
+vim.keymap.set('n', '<leader>\\', require('custom.utilities.splits').open_vertical, {
   desc = '[S]plit [H]orizontally',
 })
-vim.keymap.set('n', '<leader>-', '<CMD>split<CR>', {
+vim.keymap.set('n', '<leader>-', require('custom.utilities.splits').open_horizontal, {
   desc = '[S]plit [V]ertically',
 })
 vim.keymap.set('n', '<leader>wd', '<CMD>close<CR>', {
   desc = 'Close window',
+  silent = true,
 })
+vim.keymap.set('n', '<leader>cp', '<CMD>CopilotChat<CR>', { desc = 'Open Copilot Panel', silent = true })
+vim.keymap.set('n', '<leader>cm', '<CMD>CopilotChatModels<CR>', { desc = 'Choose Copilot model', silent = true })
