@@ -1,6 +1,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.opt.termguicolors = true
+
 vim.g.have_nerd_font = true
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -28,6 +28,16 @@ vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter' }, {
   end,
 })
 
+-- Fix: Also handle <C-c> exiting insert mode
+vim.api.nvim_create_autocmd('ModeChanged', {
+  group = number_toggle,
+  pattern = 'i:*',
+  callback = function()
+    if vim.opt.number:get() then
+      vim.opt.relativenumber = true
+    end
+  end,
+})
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
