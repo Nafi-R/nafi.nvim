@@ -16,4 +16,3 @@ map('n', '<C-j>', '<C-w><C-j>', {
 map('n', '<C-k>', '<C-w><C-k>', {
   desc = 'Move focus to the upper window',
 })
-map('n', '<leader>lg', '<cmd>LazyGit<cr>', { desc = 'LazyGit' })
