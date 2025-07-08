@@ -9,5 +9,5 @@ return {
   '^temp/',
   '^.cache/',
   '^stm32cube/',
-  '^external/',
+  '^External/',
 }

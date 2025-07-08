@@ -66,7 +66,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
         ['ui-select'] = { require('telescope.themes').get_dropdown() },
       },
     }
-    local ignored_folders = require 'custom.utilities.ignored_folders'
+    local ignored_folders = require 'custom.patterns.ignored_folders'
     -- Enable Telescope extensions if they are installed
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
