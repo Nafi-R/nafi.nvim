@@ -4,6 +4,7 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.termguicolors = true
 
 local number_toggle = vim.api.nvim_create_augroup('numbertoggle', {
   clear = true,
@@ -99,8 +100,6 @@ vim.opt.scrolloff = 10
 -- See `:help 'confirm'`
 vim.opt.confirm = true
 
-require 'config.keymaps'
-require 'custom.commands.floaterminal'
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -116,6 +115,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- Call the autosource function after its definition
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -163,6 +164,40 @@ require('lazy').setup({
     },
   },
 })
+local auto_source_folders = {
+  'config',
+  'custom/utilities',
+}
+
+local autosource = function()
+  for _, folder in ipairs(auto_source_folders) do
+    local path = vim.fn.stdpath 'config' .. '/lua/' .. folder
+    local files = vim.fn.glob(path .. '/*.lua', false, true)
+    for _, file in ipairs(files) do
+      name = vim.fn.fnamemodify(file, ':t:r')
+      require(folder .. '.' .. name)
+    end
+  end
+
+  vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = '*.lua',
+    callback = function(args)
+      --- Your code here
+      local file = args.file
+      for _, folder in ipairs(auto_source_folders) do
+        match_path = 'lua/' .. folder .. '/'
+        if file:match(match_path) then
+          local name = vim.fn.fnamemodify(file, ':t:r')
+          package.loaded[folder .. '.' .. name] = nil
+          require(folder .. '.' .. name)
+          vim.notify('Reloading module: ' .. file, vim.log.levels.INFO)
+        end
+      end
+    end,
+  })
+end
+
+autosource()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

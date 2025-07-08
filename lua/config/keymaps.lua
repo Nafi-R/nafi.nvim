@@ -63,6 +63,14 @@ map('n', '<leader>\\', require('custom.utilities.splits').open_vertical, {
 map('n', '<leader>-', require('custom.utilities.splits').open_horizontal, {
   desc = '[S]plit [V]ertically',
 })
+
+map('n', '<leader>t\\', require('custom.utilities.splits').open_terminal_vertical, {
+  desc = '[S]plit [Vertically]',
+})
+map('n', '<leader>t-', require('custom.utilities.splits').open_terminal_horizontal, {
+  desc = '[S]plit [V]ertically',
+})
+
 map('n', '<leader>q', '<CMD>close<CR>', {
   desc = 'Close window',
 })
