@@ -1,6 +1,5 @@
 local finders = require 'telescope.finders'
 local pickers = require 'telescope.pickers'
-local conf = require('telescope.config').values
 local action_state = require 'telescope.actions.state'
 local previewers = require 'telescope.previewers'
 local actions = require 'telescope.actions'
@@ -8,11 +7,15 @@ local actions = require 'telescope.actions'
 local function open_split(split_cmd)
   local telescope = require 'telescope.builtin'
   local buffers = vim.fn.getbufinfo { buflisted = 1 }
-  if #buffers > 1 then
-    vim.cmd(split_cmd)
+  local current_buf = vim.api.nvim_get_current_buf()
+  vim.cmd(split_cmd)
+  if #buffers == 1 then
+    telescope.find_files()
+  elseif #buffers == 2 then
+    local other_buf = buffers[1].bufnr == current_buf and buffers[2].bufnr or buffers[1].bufnr
+    vim.cmd('buffer ' .. other_buf)
+  elseif #buffers > 2 then
     telescope.buffers()
-  else
-    vim.cmd(split_cmd)
   end
 end
 
