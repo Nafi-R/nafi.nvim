@@ -174,7 +174,7 @@ local autosource = function()
     local path = vim.fn.stdpath 'config' .. '/lua/' .. folder
     local files = vim.fn.glob(path .. '/*.lua', false, true)
     for _, file in ipairs(files) do
-      name = vim.fn.fnamemodify(file, ':t:r')
+      local name = vim.fn.fnamemodify(file, ':t:r')
       require(folder .. '.' .. name)
     end
   end
@@ -185,12 +185,13 @@ local autosource = function()
       --- Your code here
       local file = args.file
       for _, folder in ipairs(auto_source_folders) do
-        match_path = 'lua/' .. folder .. '/'
+        local match_path = 'lua/' .. folder .. '/'
         if file:match(match_path) then
           local name = vim.fn.fnamemodify(file, ':t:r')
-          package.loaded[folder .. '.' .. name] = nil
-          require(folder .. '.' .. name)
-          vim.notify('Reloading module: ' .. file, vim.log.levels.INFO)
+          local require_path = (folder .. '.' .. name):gsub('/', '.')
+          package.loaded[require_path] = nil
+          require(require_path)
+          vim.notify('Reloading module: ' .. require_path, vim.log.levels.INFO)
         end
       end
     end,
