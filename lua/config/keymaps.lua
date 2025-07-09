@@ -102,7 +102,7 @@ map('n', '<leader>-', require('custom.utilities.splits').open_horizontal, {
 })
 
 map('n', '<leader>t\\', require('custom.utilities.splits').open_terminal_vertical, {
-  desc = '[S]plit [Vertically]',
+  desc = '[S]plit [H]orizontally',
 })
 map('n', '<leader>t-', require('custom.utilities.splits').open_terminal_horizontal, {
   desc = '[S]plit [V]ertically',
