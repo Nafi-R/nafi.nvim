@@ -10,19 +10,19 @@ map('n', '<leader>cc', require('custom.utilities.compile_commands').copy_compile
 map('n', '<leader>`', '<CMD>Floaterminal<CR>', {
   desc = 'Toggle Floating Terminal',
 })
-map('n', '<C-h>', '<C-w><C-h>', {
+map('n', '<C-h>', '<CMD>TmuxNavigateLeft<CR>', {
   desc = 'Move focus to the left window',
   noremap = true,
 })
-map('n', '<C-l>', '<C-w><C-l>', {
+map('n', '<C-l>', '<CMD>TmuxNavigateRight<CR>', {
   desc = 'Move focus to the right window',
   noremap = true,
 })
-map('n', '<C-j>', '<C-w><C-j>', {
+map('n', '<C-j>', '<CMD>TmuxNavigateDown<CR>', {
   desc = 'Move focus to the lower window',
   noremap = true,
 })
-map('n', '<C-k>', '<C-w><C-k>', {
+map('n', '<C-k>', '<CMD>TmuxNavigateUp<CR>', {
   desc = 'Move focus to the upper window',
   noremap = true,
 })
