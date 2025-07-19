@@ -5,9 +5,28 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.termguicolors = true
+vim.opt.ruler = false
+vim.opt.showmode = false
+vim.opt.cmdheight = 0
 
 local number_toggle = vim.api.nvim_create_augroup('numbertoggle', {
   clear = true,
+})
+
+-- Auto command to increase the command height when in command mode
+vim.api.nvim_create_autocmd('CmdlineEnter', {
+  group = number_toggle,
+  callback = function()
+    vim.opt.cmdheight = 1
+  end,
+})
+
+-- Auto command to decrease the command height when leaving command mode
+vim.api.nvim_create_autocmd('CmdlineLeave', {
+  group = number_toggle,
+  callback = function()
+    vim.opt.cmdheight = 0
+  end,
 })
 
 -- Auto-commands to switch between relative and absolute line numbers

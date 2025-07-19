@@ -36,7 +36,7 @@ return {
       enabled = false,
     },
     statuscolumn = {
-      enabled = true,
+      enabled = false,
     },
     words = {
       enabled = true,
