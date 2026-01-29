@@ -9,6 +9,16 @@ vim.opt.ruler = false
 vim.opt.showmode = false
 vim.opt.cmdheight = 1
 
+-- Configure Git Bash as the default shell
+vim.o.shell = [["C:/Program Files/Git/bin/bash.exe"]]
+vim.o.shellcmdflag = '-c'
+vim.o.shellredir = '>%s 2>&1'
+vim.o.shellquote = ''
+vim.o.shellxescape = ''
+vim.o.shellxquote = ''
+-- Optional: configure shell pipe for specific commands if needed
+vim.o.shellpipe = '2>&1| tee'
+
 local number_toggle = vim.api.nvim_create_augroup('numbertoggle', {
   clear = true,
 })
