@@ -78,8 +78,10 @@ map('n', '<leader>bo', function()
   local bufnr = vim.api.nvim_get_current_buf()
   local buffers = vim.api.nvim_list_bufs()
   for _, b in ipairs(buffers) do
-    if b ~= bufnr and vim.api.nvim_buf_is_loaded(b) then
-      vim.api.nvim_buf_delete(b, {})
+    -- Check if buffer is valid and listed (shows in buffer list)
+    if b ~= bufnr and vim.api.nvim_buf_is_valid(b) and vim.bo[b].buflisted then
+      -- Use pcall to handle errors gracefully and force delete
+      pcall(vim.api.nvim_buf_delete, b, { force = true })
     end
   end
 end, { desc = '[B]uffer delete [o]thers' })
