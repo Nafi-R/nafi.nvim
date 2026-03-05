@@ -72,7 +72,7 @@ map('v', '>', '>gv')
 
 -- Buffer management
 map('n', '<leader><TAB>', '<CMD>bn<CR>')
-map('n', '<leader><S-TAB>', '<CMD>bp<CR>')
+map('n', '<leader><BACKSPACE>', '<CMD>bp<CR>')
 map('n', '<leader>bd', '<CMD>bd<CR>', { desc = '[B]uffer [D]elete' })
 map('n', '<leader>bo', function()
   local bufnr = vim.api.nvim_get_current_buf()
